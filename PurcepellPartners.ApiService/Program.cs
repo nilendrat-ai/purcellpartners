@@ -9,8 +9,12 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// Register MVC controllers
+builder.Services.AddControllers();
+
+// Register Swagger services
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 //Register Services
 builder.Services.AddSingleton<IInputValidator, InputValidator>();
@@ -23,18 +27,12 @@ app.UseExceptionHandler();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+app.UseRouting();
 
-app.MapGet("/missing", (IMissingNumberSearchService finder, ILogger<Program> logger) =>
-{
-    int[] nums = new[] { 9, 6, 4, 2, 3, 5, 7, 0, 1 };
-    logger.LogInformation("Received request for missing number.");
-
-    int missing = finder.FindMissingNumber(nums);
-
-    return Results.Ok(new { Input = nums, Missing = missing });
-});
+app.MapControllers();
 
 app.MapDefaultEndpoints();
 

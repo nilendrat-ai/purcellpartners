@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PurcepellPartners.ApiService\PurcepellPartners.ApiService.csproj" />
-    <ProjectReference Include="..\PurcepellPartners.Web\PurcepellPartners.Web.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -12,39 +12,38 @@ namespace PurcepellPartners.ApiService.Services.Implementation
             _inputValidator = inputValidator;
         }
 
-        public int FindMissingNumber(int[] inputNumbers)
+        public List<int> FindMissingNumbers(int[] inputNumbers)
         {
-            int result = -1;
+            List<int> result = new List<int>();
             try
             {
                 _inputValidator.Validate(inputNumbers);
 
-                int counter = 0;
-
                 inputNumbers = inputNumbers.OrderBy(x => x).ToArray();
 
-                while (counter < inputNumbers.Length)
+                for (int i = 0; i < inputNumbers.Length - 1; i++)
                 {
-                    if (inputNumbers[counter+1] - inputNumbers[counter] !=1)
+                    int current = inputNumbers[i];
+                    int next = inputNumbers[i + 1];
+
+                    // If the difference is more than 1, find the missing numbers
+                    if (next - current > 1)
                     {
-                        result =  inputNumbers[counter]+1;
-                        counter = inputNumbers.Length;
+                        for (int missing = current + 1; missing < next; missing++)
+                        {
+                            result.Add(missing);
+                        }
                     }
-                    counter++;
                 }
+
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Error in FindMissing Number : {ex.StackTrace}");
+                _logger.LogError($"Error in FindMissingNumbers Number : {ex.StackTrace}");
                 throw;
             }
 
             return result;
-        }
-
-        public List<int> FindMissingNumbers(int[] inputNumbers)
-        {
-            throw new NotImplementedException();
         }
     }
 }
