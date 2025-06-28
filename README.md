@@ -4,5 +4,5 @@
 - Input Validation with proper error handling
 - XUnit Tests
 - Swagger UI
-- Dependency Injection** and layered architecture
+- Dependency Injection and layered architecture
 
