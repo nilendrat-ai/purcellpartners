@@ -9,7 +9,7 @@
         }
         public void Validate(int[] input)
         {
-      
+
             //Check if the input array is null or empty
             if (input == null || input.Length == 0)
             {
@@ -25,7 +25,7 @@
             }
 
             //Check if the input array contains negative numbers
-            if (input == null || input.Any(x=> x <0) )
+            if (input == null || input.Any(x => x < 0))
             {
                 _logger.LogWarning("Input array contains negative.");
                 throw new ArgumentException("Input array cannot contain negative values.");
@@ -35,7 +35,7 @@
             if (input.Distinct().Count() != input.Length)
             {
                 _logger.LogWarning("Input contains duplicate values.");
-                throw new ArgumentException("Input array must contain distinct values.");
+                throw new ArgumentException("Input array must not contain distinct values.");
             }
         }
     }

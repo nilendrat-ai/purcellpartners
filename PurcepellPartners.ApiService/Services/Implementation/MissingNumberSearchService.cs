@@ -37,6 +37,11 @@ namespace PurcepellPartners.ApiService.Services.Implementation
                 }
 
             }
+            catch (ArgumentException ex)
+            {
+                _logger.LogWarning($"Input validation failed: {ex.Message}");
+                throw;
+            }
             catch (Exception ex)
             {
                 _logger.LogError($"Error in FindMissingNumbers Number : {ex.StackTrace}");
