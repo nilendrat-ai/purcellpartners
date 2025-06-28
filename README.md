@@ -1,8 +1,8 @@
 ## Features
 
-- Missing Number Detection** from a sequence
+- Missing Number Detection from an array
 - Input Validation** with proper error handling
-- xUnit + Aspire Integration Tests**
-- Swagger UI**
+- XUnit Tests
+- Swagger UI
 - Dependency Injection** and layered architecture
 
