@@ -5,4 +5,5 @@
 - XUnit Tests
 - Swagger UI
 - Dependency Injection and layered architecture
+- .NET 9 with Aspire Orchestration
 
